@@ -1,4 +1,5 @@
 const Express = require("express");
+const morgan = require("morgan");
 const dotenv = require("dotenv");
 require("colors");
 
@@ -6,15 +7,12 @@ require("colors");
 const app = Express();
 dotenv.config({ path: "./config/config.env" });
 
-//main
-app.get("/", (req, res) => {
-  res.send({
-    sucesss: true,
-    data: "hello world",
-    env: process.env.TEXT,
-    testing: "testing1",
-  });
-});
+//import routes
+const product = require("./routes/product");
+
+//middleware
+app.use(morgan("dev"));
+app.use("/api/v1/product", product);
 
 //port listen
 const port = process.env.PORT || 5000;
