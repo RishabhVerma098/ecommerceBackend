@@ -12,6 +12,7 @@ app.get("/", (req, res) => {
     sucesss: true,
     data: "hello world",
     env: process.env.TEXT,
+    testing: "testing1",
   });
 });
 
