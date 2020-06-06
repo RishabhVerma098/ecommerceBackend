@@ -6,13 +6,16 @@ require("colors");
 //initialization
 const app = Express();
 dotenv.config({ path: "./config/config.env" });
+const connectDb = require("./config/db");
 
 //import routes
 const product = require("./routes/product");
 
 //middleware
 app.use(morgan("dev"));
+app.use(Express.json());
 app.use("/api/v1/product", product);
+connectDb();
 
 //port listen
 const port = process.env.PORT || 5000;

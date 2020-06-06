@@ -1,4 +1,6 @@
 //*FIXME:Add errorHandler , advanceFiltering
+const productModel = require("../models/product");
+
 /**
  * @description get all the products
  * @param route GET /api/v1/product
@@ -6,9 +8,11 @@
  */
 exports.getProducts = async (req, res, next) => {
   try {
+    const products = await productModel.find();
     res.status(200).json({
       sucess: true,
-      data: "all products",
+      count: products.length,
+      data: products,
     });
   } catch (error) {
     next(error);
@@ -39,9 +43,11 @@ exports.getSingleProduct = async (req, res, next) => {
 //TODO:Add Auth
 exports.createProduct = async (req, res, next) => {
   try {
+    const product = await productModel.create(req.body);
+
     res.status(200).json({
       sucess: true,
-      data: "create a product",
+      data: product,
     });
   } catch (error) {
     next(error);
