@@ -8,17 +8,7 @@ const ErrorHandler = require("../utils/errorHandler.js");
  */
 exports.getProducts = async (req, res, next) => {
   try {
-    const products = await productModel.find();
-
-    if (!products) {
-      return next(new ErrorHandler(``));
-    }
-
-    res.status(200).json({
-      sucess: true,
-      count: products.length,
-      data: products,
-    });
+    res.status(200).json(res.advanceResults);
   } catch (error) {
     next(error);
   }

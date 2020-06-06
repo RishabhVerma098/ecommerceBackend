@@ -9,7 +9,14 @@ const {
 
 const router = express.Router();
 
-router.route("/").get(getProducts).post(createProduct);
+//imports
+const advanceFiltering = require("../middleware/advanceFiltering.js");
+const productModel = require("../models/product");
+
+router
+  .route("/")
+  .get(advanceFiltering(productModel), getProducts)
+  .post(createProduct);
 router
   .route("/:id")
   .get(getSingleProduct)

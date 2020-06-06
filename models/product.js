@@ -60,8 +60,8 @@ const productSchema = new mongoose.Schema(
       ],
     },
     sold: {
-      type: Boolean,
-      default: false,
+      type: Number,
+      default: 0,
     },
     video: {
       type: [String],
@@ -69,8 +69,8 @@ const productSchema = new mongoose.Schema(
     },
   },
   {
-    toJSON: { virtuals: true },
-    toObject: { virtuals: true },
+    // Make Mongoose use Unix time (seconds since Jan 1, 1970)
+    timestamps: true,
   }
 );
 
