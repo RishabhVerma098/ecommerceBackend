@@ -115,8 +115,9 @@ exports.forgetpassword = async (req, res, next) => {
       await sendEmail({
         email: user.email,
         subject: "password reset token",
-        message: `you have requested to reset password , please make PUT to ${resetUrl}`,
+        message: `you have requested to reset password , your CODE : ${resetToken}`,
       });
+      // ? code in message
       res.status(200).json({
         sucess: true,
         data: "reset password mail sent",

@@ -2,6 +2,7 @@ const mongoose = require("mongoose");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const crypto = require("crypto");
+var randomize = require("randomatic");
 //TODO: add cart in schema
 const UserSchema = new mongoose.Schema({
   name: {
@@ -52,8 +53,7 @@ UserSchema.methods.matchpasswords = async function (enteredPassword) {
 
 UserSchema.methods.getResetToken = function () {
   //genrating token
-  const resetToken = crypto.randomBytes(20).toString("hex");
-
+  const resetToken = randomize("0", 6);
   //hash the generated token
   this.resetPasswordToken = crypto
     .createHash("sha256")
@@ -66,4 +66,3 @@ UserSchema.methods.getResetToken = function () {
 };
 
 module.exports = mongoose.model("User", UserSchema);
-
