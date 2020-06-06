@@ -1,6 +1,6 @@
-//*FIXME:Add errorHandler , advanceFiltering
+//*FIXME:Add advanceFiltering
 const productModel = require("../models/product");
-
+const ErrorHandler = require("../utils/errorHandler.js");
 /**
  * @description get all the products
  * @param route GET /api/v1/product
@@ -9,6 +9,11 @@ const productModel = require("../models/product");
 exports.getProducts = async (req, res, next) => {
   try {
     const products = await productModel.find();
+
+    if (!products) {
+      return next(new ErrorHandler(``));
+    }
+
     res.status(200).json({
       sucess: true,
       count: products.length,
@@ -26,9 +31,17 @@ exports.getProducts = async (req, res, next) => {
  */
 exports.getSingleProduct = async (req, res, next) => {
   try {
+    const product = await productModel.findById(req.params.id);
+
+    if (!product) {
+      return next(
+        new ErrorHandler(`Product not find at Id:${req.params.id}`, 404)
+      );
+    }
+
     res.status(200).json({
       sucess: true,
-      data: "get a product",
+      data: product,
     });
   } catch (error) {
     next(error);
@@ -47,7 +60,7 @@ exports.createProduct = async (req, res, next) => {
 
     res.status(200).json({
       sucess: true,
-      data: product,
+      createdData: product,
     });
   } catch (error) {
     next(error);
@@ -62,9 +75,23 @@ exports.createProduct = async (req, res, next) => {
 //TODO:Add Auth
 exports.updateProduct = async (req, res, next) => {
   try {
+    const product = await productModel.findByIdAndUpdate(
+      req.params.id,
+      req.body,
+      {
+        new: true,
+        runValidators: true,
+      }
+    );
+    if (!product) {
+      return next(
+        new ErrorHandler(`Product not find at Id:${req.params.id}`, 404)
+      );
+    }
+
     res.status(200).json({
       sucess: true,
-      data: "update a product",
+      updatedData: product,
     });
   } catch (error) {
     next(error);
@@ -79,9 +106,17 @@ exports.updateProduct = async (req, res, next) => {
 //TODO:Add Auth
 exports.deleteProduct = async (req, res, next) => {
   try {
+    const product = await productModel.findById(req.params.id);
+    if (!product) {
+      return next(
+        new ErrorHandler(`Product not find at Id:${req.params.id}`, 404)
+      );
+    }
+    product.remove();
+
     res.status(200).json({
       sucess: true,
-      data: "delete a product",
+      deletedData: product,
     });
   } catch (error) {
     next(error);

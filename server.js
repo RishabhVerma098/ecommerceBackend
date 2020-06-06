@@ -8,13 +8,15 @@ const app = Express();
 dotenv.config({ path: "./config/config.env" });
 const connectDb = require("./config/db");
 
-//import routes
+//import routes and middlewares
 const product = require("./routes/product");
+const errorHandler = require("./middleware/errorHandler");
 
 //middleware
 app.use(morgan("dev"));
 app.use(Express.json());
 app.use("/api/v1/product", product);
+app.use(errorHandler);
 connectDb();
 
 //port listen
