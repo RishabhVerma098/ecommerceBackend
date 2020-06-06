@@ -3,8 +3,8 @@ const {
   registerUser,
   loginUser,
   getMe,
-  //   forgetpassword,
-  //   resetpassword,
+  forgetpassword,
+  resetpassword,
 } = require("../controllers/auth.js");
 
 const router = express.Router();
@@ -14,6 +14,6 @@ router.route("/register").post(registerUser);
 
 router.route("/login").post(loginUser);
 router.route("/me").get(protectRoute, getMe);
-// router.route("/forgetpassword").post(forgetpassword);
-// router.route("/resetpassword/:resettoken").put(resetpassword);
+router.route("/forgetpassword").post(forgetpassword);
+router.route("/resetpassword/:resettoken").put(resetpassword);
 module.exports = router;

@@ -1,6 +1,6 @@
 const ErrorHandler = require("../utils/errorHandler.js");
 const userModel = require("../models/User.js");
-//const sendEmail = require("../utils/sendemail.js");
+const sendEmail = require("../utils/sendmail");
 const crypto = require("crypto");
 /**
  * @description register user
@@ -90,92 +90,92 @@ exports.getMe = async (req, res, next) => {
   }
 };
 
-// /**
-//  * @description forget password
-//  * @param route POST /api/v1/auth/forgetpassword
-//  * @param access PRIVATE
-//  */
-// exports.forgetpassword = async (req, res, next) => {
-//   try {
-//     const user = await userModel.findOne({ email: req.body.email });
-//     if (!user) {
-//       return next(new ErrorHandler(`User is not present`, 404));
-//     }
+/**
+ * @description forget password
+ * @param route POST /api/v1/auth/forgetpassword
+ * @param access PRIVATE
+ */
+exports.forgetpassword = async (req, res, next) => {
+  try {
+    const user = await userModel.findOne({ email: req.body.email });
+    if (!user) {
+      return next(new ErrorHandler(`User is not present`, 404));
+    }
 
-//     const resetToken = user.getResetToken();
+    const resetToken = user.getResetToken();
 
-//     await user.save({ validateBeforeSave: false });
+    await user.save({ validateBeforeSave: false });
 
-//     //create url
-//     const resetUrl = `${req.protocol}://${req.get(
-//       "host"
-//     )}/api/v1/auth/resetpassword/${resetToken}`;
+    //create url
+    const resetUrl = `${req.protocol}://${req.get(
+      "host"
+    )}/api/v1/auth/resetpassword/${resetToken}`;
 
-//     try {
-//       await sendEmail({
-//         email: user.email,
-//         subject: "password reset token",
-//         message: `you have requested to reset password , please make PUT to ${resetUrl}`,
-//       });
-//       res.status(200).json({
-//         sucess: true,
-//         data: "reset password mail sent",
-//       });
-//     } catch (error) {
-//       console.log(error);
-//       user.resetPasswordToken = undefined;
-//       user.resetPasswordExpire = undefined;
-//       await user.save({ validateBeforeSave: false });
-//       next(new ErrorHandler(`email could not be sent`, 500));
-//     }
+    try {
+      await sendEmail({
+        email: user.email,
+        subject: "password reset token",
+        message: `you have requested to reset password , please make PUT to ${resetUrl}`,
+      });
+      res.status(200).json({
+        sucess: true,
+        data: "reset password mail sent",
+      });
+    } catch (error) {
+      console.log(error);
+      user.resetPasswordToken = undefined;
+      user.resetPasswordExpire = undefined;
+      await user.save({ validateBeforeSave: false });
+      next(new ErrorHandler(`email could not be sent`, 500));
+    }
 
-//     res.status(200).json({
-//       sucess: true,
-//       data: user,
-//     });
-//   } catch (error) {
-//     next(error);
-//   }
-// };
+    res.status(200).json({
+      sucess: true,
+      data: user,
+    });
+  } catch (error) {
+    next(error);
+  }
+};
 
-// /**
-//  * @description reset password
-//  * @param route PUT /api/v1/auth/resetpassword/:resettoken
-//  * @param access PRIVATE
-//  */
-// exports.resetpassword = async (req, res, next) => {
-//   try {
-//     const resetPasswordToken = crypto
-//       .createHash("sha256")
-//       .update(req.params.resettoken)
-//       .digest("hex");
+/**
+ * @description reset password
+ * @param route PUT /api/v1/auth/resetpassword/:resettoken
+ * @param access PRIVATE
+ */
+exports.resetpassword = async (req, res, next) => {
+  try {
+    const resetPasswordToken = crypto
+      .createHash("sha256")
+      .update(req.params.resettoken)
+      .digest("hex");
 
-//     const user = await userModel.findOne({
-//       resetPasswordToken,
+    const user = await userModel.findOne({
+      resetPasswordToken,
 
-//       //our resetpassowrdExpire should be greater than present time
-//       resetPasswordExpire: {
-//         $gt: Date.now(),
-//       },
-//     });
+      //our resetpassowrdExpire should be greater than present time
+      resetPasswordExpire: {
+        $gt: Date.now(),
+      },
+    });
 
-//     if (!user) {
-//       return next(new ErrorHandler(`Invalid token`, 404));
-//     }
+    if (!user) {
+      return next(new ErrorHandler(`Invalid token`, 404));
+    }
 
-//     //replace old password with new one
-//     user.password = req.body.password;
-//     user.resetPasswordToken = undefined;
-//     user.resetPasswordExpire = undefined;
-//     await user.save();
+    //replace old password with new one
+    user.password = req.body.password;
+    user.resetPasswordToken = undefined;
+    user.resetPasswordExpire = undefined;
+    await user.save();
 
-//     const token = user.getSignedJwtToken();
+    const token = user.getSignedJwtToken();
 
-//     res.status(200).json({
-//       sucess: true,
-//       token,
-//     });
-//   } catch (error) {
-//     next(error);
-//   }
-// };
+    res.status(200).json({
+      sucess: true,
+      token,
+    });
+  } catch (error) {
+    next(error);
+  }
+};
