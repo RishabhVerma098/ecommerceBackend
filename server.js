@@ -11,11 +11,13 @@ const connectDb = require("./config/db");
 //import routes and middlewares
 const product = require("./routes/product");
 const errorHandler = require("./middleware/errorHandler");
+const auth = require("./routes/user");
 
 //middleware
 app.use(morgan("dev"));
 app.use(Express.json());
 app.use("/api/v1/product", product);
+app.use("/api/v1/auth", auth);
 app.use(errorHandler);
 connectDb();
 
