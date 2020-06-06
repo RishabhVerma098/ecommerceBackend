@@ -12,15 +12,16 @@ const router = express.Router();
 //imports
 const advanceFiltering = require("../middleware/advanceFiltering.js");
 const productModel = require("../models/product");
+const { protectRoute } = require("../middleware/auth.js");
 
 router
   .route("/")
   .get(advanceFiltering(productModel), getProducts)
-  .post(createProduct);
+  .post(protectRoute, createProduct);
 router
   .route("/:id")
   .get(getSingleProduct)
-  .put(updateProduct)
-  .delete(deleteProduct);
+  .put(protectRoute, updateProduct)
+  .delete(protectRoute, deleteProduct);
 
 module.exports = router;
