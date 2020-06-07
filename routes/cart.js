@@ -1,5 +1,10 @@
 const express = require("express");
-const { getCartItems, createCartItem } = require("../controllers/cart");
+const {
+  getCartItems,
+  createCartItem,
+  updateCartItem,
+  deleteCartItem,
+} = require("../controllers/cart");
 
 const router = express.Router();
 
@@ -12,6 +17,10 @@ router
   .route("/")
   .get(protectRoute, advanceFiltering(cartModel, "product"), getCartItems);
 
-router.route("/:productId").post(protectRoute, createCartItem);
+router
+  .route("/:productId")
+  .post(protectRoute, createCartItem)
+  .put(protectRoute, updateCartItem)
+  .delete(protectRoute, deleteCartItem);
 
 module.exports = router;

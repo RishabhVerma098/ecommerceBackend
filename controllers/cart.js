@@ -32,7 +32,6 @@ exports.getCartItems = async (req, res, next) => {
  * @param route POST /api/v1/cart/:productId
  * @param access PRIVATE
  */
-//TODO:Add Auth
 exports.createCartItem = async (req, res, next) => {
   try {
     req.body.user = req.user.id;
@@ -43,6 +42,60 @@ exports.createCartItem = async (req, res, next) => {
     res.status(200).json({
       sucess: true,
       createdData: product,
+    });
+  } catch (error) {
+    next(error);
+  }
+};
+
+/**
+ * @description update cart
+ * @param route PUT /api/v1/cart/:productId
+ * @param access PRIVATE
+ */
+exports.updateCartItem = async (req, res, next) => {
+  try {
+    const cart_item = await cartModel.findByIdAndUpdate(
+      req.params.productId,
+      req.body,
+      {
+        new: true,
+        runValidators: true,
+      }
+    );
+    if (!cart_item) {
+      return next(
+        new ErrorHandler(`Cart_Item not find at Id:${req.params.id}`, 404)
+      );
+    }
+
+    res.status(200).json({
+      sucess: true,
+      createdData: cart_item,
+    });
+  } catch (error) {
+    next(error);
+  }
+};
+
+/**
+ * @description delete a cart item
+ * @param route delete /api/v1/cart/:productId
+ * @param access PRIVATE
+ */
+exports.deleteCartItem = async (req, res, next) => {
+  try {
+    const cart_item = await cartModel.findById(req.params.productId);
+    if (!cart_item) {
+      return next(
+        new ErrorHandler(`Cart_Item not find at Id:${req.params.id}`, 404)
+      );
+    }
+    cart_item.remove();
+
+    res.status(200).json({
+      sucess: true,
+      deletedData: cart_item,
     });
   } catch (error) {
     next(error);

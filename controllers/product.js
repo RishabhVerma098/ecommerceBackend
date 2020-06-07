@@ -1,4 +1,3 @@
-//*FIXME:Add advanceFiltering
 const productModel = require("../models/product");
 const ErrorHandler = require("../utils/errorHandler.js");
 /**
@@ -43,7 +42,6 @@ exports.getSingleProduct = async (req, res, next) => {
  * @param route POST /api/v1/product
  * @param access PRIVATE
  */
-//TODO:Add Auth
 exports.createProduct = async (req, res, next) => {
   try {
     const product = await productModel.create(req.body);
@@ -62,7 +60,6 @@ exports.createProduct = async (req, res, next) => {
  * @param route PUT /api/v1/product/:id
  * @param access PRIVATE
  */
-//TODO:Add Auth
 exports.updateProduct = async (req, res, next) => {
   try {
     const product = await productModel.findByIdAndUpdate(
@@ -93,7 +90,6 @@ exports.updateProduct = async (req, res, next) => {
  * @param route delete /api/v1/product/:id
  * @param access PRIVATE
  */
-//TODO:Add Auth
 exports.deleteProduct = async (req, res, next) => {
   try {
     const product = await productModel.findById(req.params.id);
