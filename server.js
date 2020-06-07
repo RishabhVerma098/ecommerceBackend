@@ -17,6 +17,7 @@ Sentry.init({
 const product = require("./routes/product");
 const errorHandler = require("./middleware/errorHandler");
 const auth = require("./routes/user");
+const cart = require("./routes/cart");
 
 //middleware
 // *The request handler must be the first middleware on the app
@@ -25,6 +26,7 @@ app.use(morgan("dev"));
 app.use(Express.json());
 app.use("/api/v1/product", product);
 app.use("/api/v1/auth", auth);
+app.use("/api/v1/cart", cart);
 // * The error handler must be before any other error middleware and after all controllers
 app.use(
   Sentry.Handlers.errorHandler({
