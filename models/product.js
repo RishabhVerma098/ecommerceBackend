@@ -35,6 +35,12 @@ const productSchema = new mongoose.Schema(
       default: "no-photo.jpg",
       required: [true, "Photo cannot be empty"],
     },
+    gameFile: {
+      type: String,
+      default: "no-game.jpg",
+      required: [true, "Photo cannot be empty"],
+      select: false,
+    },
     offer: {
       type: Number,
       min: -1,
