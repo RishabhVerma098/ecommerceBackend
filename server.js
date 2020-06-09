@@ -3,6 +3,7 @@ const morgan = require("morgan");
 const dotenv = require("dotenv");
 const Sentry = require("@sentry/node");
 require("colors");
+const cors = require("cors");
 
 //initialization
 const app = Express();
@@ -19,16 +20,20 @@ const errorHandler = require("./middleware/errorHandler");
 const auth = require("./routes/user");
 const cart = require("./routes/cart");
 const mygame = require("./routes/mygame");
+const payment = require("./routes/payment");
 
 //middleware
 // *The request handler must be the first middleware on the app
 app.use(Sentry.Handlers.requestHandler());
+app.use(cors());
 app.use(morgan("dev"));
 app.use(Express.json());
+
 app.use("/api/v1/product", product);
 app.use("/api/v1/auth", auth);
 app.use("/api/v1/cart", cart);
 app.use("/api/v1/mygames", mygame);
+app.use("/api/v1/payment", payment);
 // * The error handler must be before any other error middleware and after all controllers
 app.use(
   Sentry.Handlers.errorHandler({
