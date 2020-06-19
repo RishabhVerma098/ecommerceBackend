@@ -13,6 +13,8 @@ exports.getMyGames = async (req, res, next) => {
 
     let games = [];
 
+    //TODO:change only display those who have sucess true
+
     for (let i = 0; i < cart_items.length; i++) {
       const product = await productModel
         .find({ _id: cart_items[i].product.toString() })

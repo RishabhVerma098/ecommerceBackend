@@ -36,6 +36,18 @@ exports.makePayment = async (req, res, next) => {
   try {
     const response = await razorpay.orders.create(options);
     console.log(response);
+
+    // //call update cart orderID
+    const cart_Item = await cartModel.find({ product: id.toString() });
+    console.log(cart_Item);
+
+    // ! here get cart_item and update the order_Id field from response
+    // ! then the flow will move to verify payment by webhook
+    // ! where once verified , get the cart_Item by ORDER_ID and update purchased to true
+    // ! At last call FIX 'my game' route to get games who has purchased true , currently we are getting all the items present in the cart
+
+    // cart_Item.addOrderId(response.id);
+
     res.json({
       id: response.id,
       currency: response.currency,
@@ -62,6 +74,7 @@ exports.verifyPayment = async (req, res, next) => {
     if (digest === req.headers["x-razorpay-signature"]) {
       let body = JSON.stringify(req.body, null, 4);
       require("fs").writeFileSync("payment3.json", body);
+      //TODO: where once verified , get the cart_Item by ORDER_ID and update purchased to true
     } else {
       // pass it
       next(new ErrorHandler(`Body and header not same`, 500));

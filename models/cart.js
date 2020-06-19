@@ -16,6 +16,9 @@ const cartSchema = new mongoose.Schema(
       type: Boolean,
       default: false,
     },
+    order_Id: {
+      type: String,
+    },
     purchased: {
       type: Boolean,
       default: false,
@@ -25,5 +28,11 @@ const cartSchema = new mongoose.Schema(
     timestamps: true,
   }
 );
+
+// cartSchema.methods.addOrderId = async function (orderId) {
+//   this.order_Id = orderId;
+
+//   return null;
+// };
 
 module.exports = mongoose.model("Cart", cartSchema);
