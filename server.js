@@ -4,6 +4,8 @@ const dotenv = require("dotenv");
 const Sentry = require("@sentry/node");
 require("colors");
 const cors = require("cors");
+const swaggerUi = require("swagger-ui-express");
+const swaggerDocument = require("./eccommerce.postman_collection.json-Swagger20.json");
 
 //initialization
 const app = Express();
@@ -28,12 +30,19 @@ app.use(Sentry.Handlers.requestHandler());
 app.use(cors());
 app.use(morgan("dev"));
 app.use(Express.json());
-
 app.use("/api/v1/product", product);
 app.use("/api/v1/auth", auth);
 app.use("/api/v1/cart", cart);
 app.use("/api/v1/mygames", mygame);
 app.use("/api/v1/payment", payment);
+
+//swagger
+
+var options = {
+  customCss: `.swagger-ui .topbar { display: none } `,
+};
+app.use("/", swaggerUi.serve, swaggerUi.setup(swaggerDocument, options));
+
 // * The error handler must be before any other error middleware and after all controllers
 app.use(
   Sentry.Handlers.errorHandler({
@@ -43,10 +52,6 @@ app.use(
 );
 app.use(errorHandler);
 connectDb();
-
-app.get("/debug-sentry", function mainHandler(req, res) {
-  throw new Error("My first Sentry error!");
-});
 
 //port listen
 const port = process.env.PORT || 5000;

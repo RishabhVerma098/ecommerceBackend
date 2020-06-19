@@ -1,0 +1,649 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0",
+    "title": "Eccommerce",
+    "description": "For better docmentation : https://documenter.getpostman.com/view/6681850/Szzn6bww",
+    "contact": {}
+  },
+  "host": "example.com",
+  "basePath": "/api/v1",
+  "securityDefinitions": {},
+  "schemes": ["http"],
+  "consumes": ["application/json"],
+  "produces": ["application/json"],
+  "paths": {
+    "/product": {
+      "get": {
+        "summary": "get all products",
+        "tags": ["products"],
+        "operationId": "getallproducts",
+        "deprecated": false,
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "required": false,
+            "default": "Bearer {token}",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        }
+      },
+      "post": {
+        "summary": "create product",
+        "tags": ["products"],
+        "operationId": "createproduct",
+        "deprecated": false,
+        "produces": ["application/json"],
+        "consumes": ["application/json"],
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "required": false,
+            "default": "Bearer {token}",
+            "type": "string"
+          },
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "Body",
+            "in": "body",
+            "required": true,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/createproductrequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        }
+      }
+    },
+    "/product/5eecc6252c20de0f94b7197e": {
+      "get": {
+        "summary": "get  single product",
+        "tags": ["products"],
+        "operationId": "getsingleproduct",
+        "deprecated": false,
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "required": false,
+            "default": "Bearer {token}",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        }
+      },
+      "put": {
+        "summary": "update product",
+        "tags": ["products"],
+        "operationId": "updateproduct",
+        "deprecated": false,
+        "produces": ["application/json"],
+        "consumes": ["application/json"],
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "required": false,
+            "default": "Bearer {token}",
+            "type": "string"
+          },
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "Body",
+            "in": "body",
+            "required": true,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/updateproductrequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        }
+      },
+      "delete": {
+        "summary": "delete product",
+        "tags": ["products"],
+        "operationId": "deleteproduct",
+        "deprecated": false,
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "required": false,
+            "default": "Bearer {token}",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        }
+      }
+    },
+    "/auth/register": {
+      "post": {
+        "summary": "register User",
+        "tags": ["Auth"],
+        "operationId": "registerUser",
+        "deprecated": false,
+        "produces": ["application/json"],
+        "consumes": ["application/json"],
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "required": false,
+            "default": "Bearer {token}",
+            "type": "string"
+          },
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "required": true,
+            "type": "string",
+            "description": ""
+          },
+          {
+            "name": "Body",
+            "in": "body",
+            "required": true,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/registerUserRequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        }
+      }
+    },
+    "/auth/me": {
+      "get": {
+        "description": "authorize loggedIn user",
+        "summary": "authorize me",
+        "tags": ["Auth"],
+        "operationId": "authorizeme",
+        "deprecated": false,
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "required": false,
+            "default": "Bearer {token}",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        }
+      }
+    },
+    "/auth/login": {
+      "post": {
+        "summary": "login user",
+        "tags": ["Auth"],
+        "operationId": "loginuser",
+        "deprecated": false,
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "required": false,
+            "default": "Bearer {token}",
+            "type": "string"
+          },
+          {
+            "name": "Body",
+            "in": "body",
+            "required": true,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/loginuserrequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        }
+      }
+    },
+    "/auth/resetpassword/523055": {
+      "put": {
+        "summary": "reset password",
+        "tags": ["Auth"],
+        "operationId": "resetpassword",
+        "deprecated": false,
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "required": false,
+            "default": "Bearer {token}",
+            "type": "string"
+          },
+          {
+            "name": "Body",
+            "in": "body",
+            "required": true,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/resetpasswordrequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        }
+      }
+    },
+    "/auth/forgetpassword": {
+      "post": {
+        "summary": "forget passowrd",
+        "tags": ["Auth"],
+        "operationId": "forgetpassowrd",
+        "deprecated": false,
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "required": false,
+            "default": "Bearer {token}",
+            "type": "string"
+          },
+          {
+            "name": "Body",
+            "in": "body",
+            "required": true,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/forgetpassowrdrequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        }
+      }
+    },
+    "/cart/5edbad183c58564b2895263e": {
+      "post": {
+        "summary": "create cart item",
+        "tags": ["cart"],
+        "operationId": "createcartitem",
+        "deprecated": false,
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "required": false,
+            "default": "Bearer {token}",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        }
+      }
+    },
+    "/cart": {
+      "get": {
+        "summary": "get cart item",
+        "tags": ["cart"],
+        "operationId": "getcartitem",
+        "deprecated": false,
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "required": false,
+            "default": "Bearer {token}",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        }
+      }
+    },
+    "/cart/5edd31c75e43c518d08b407c": {
+      "put": {
+        "summary": "update cart item",
+        "tags": ["cart"],
+        "operationId": "updatecartitem",
+        "deprecated": false,
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "required": false,
+            "default": "Bearer {token}",
+            "type": "string"
+          },
+          {
+            "name": "Body",
+            "in": "body",
+            "required": true,
+            "description": "",
+            "schema": {
+              "$ref": "#/definitions/updatecartitemrequest"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        }
+      },
+      "delete": {
+        "summary": "delete cart item",
+        "tags": ["cart"],
+        "operationId": "deletecartitem",
+        "deprecated": false,
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "required": false,
+            "default": "Bearer {token}",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        }
+      }
+    },
+    "/mygames": {
+      "get": {
+        "summary": "my games",
+        "tags": ["cart"],
+        "operationId": "mygames",
+        "deprecated": false,
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "name": "Authorization",
+            "in": "header",
+            "required": false,
+            "default": "Bearer {token}",
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "headers": {}
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "createproductrequest": {
+      "title": "createproductrequest",
+      "example": {
+        "id": 3,
+        "title": "Supreme",
+        "description": "Displaced of navicular [scaphoid] of right foot, initial encounter for open fracture",
+        "rating": 4.5,
+        "price": "3500",
+        "offer": 20,
+        "platform": "PS4",
+        "genre": null,
+        "pegi": 13,
+        "company": "Rockstar Games",
+        "sold": false,
+        "dp": "something.jpg",
+        "video": ["null.mp4", "null.mp4", "null.mp4"]
+      },
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "title": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "rating": {
+          "type": "number",
+          "format": "double"
+        },
+        "price": {
+          "type": "string"
+        },
+        "offer": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "platform": {
+          "type": "string"
+        },
+        "genre": {
+          "type": "string"
+        },
+        "pegi": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "company": {
+          "type": "string"
+        },
+        "sold": {
+          "type": "boolean"
+        },
+        "dp": {
+          "type": "string"
+        },
+        "video": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "required": [
+        "id",
+        "title",
+        "description",
+        "rating",
+        "price",
+        "offer",
+        "platform",
+        "genre",
+        "pegi",
+        "company",
+        "sold",
+        "dp",
+        "video"
+      ]
+    },
+    "updateproductrequest": {
+      "title": "updateproductrequest",
+      "example": {
+        "rating": 2
+      },
+      "type": "object",
+      "properties": {
+        "rating": {
+          "type": "integer",
+          "format": "int32"
+        }
+      },
+      "required": ["rating"]
+    },
+    "registerUserRequest": {
+      "title": "registerUserRequest",
+      "example": {
+        "name": "john Doe",
+        "email": "john@gmail.com",
+        "password": "alpha098"
+      },
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        }
+      },
+      "required": ["name", "email", "password"]
+    },
+    "loginuserrequest": {
+      "title": "loginuserrequest",
+      "example": {
+        "email": "john@gmail.com",
+        "password": "alpha0987"
+      },
+      "type": "object",
+      "properties": {
+        "email": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        }
+      },
+      "required": ["email", "password"]
+    },
+    "resetpasswordrequest": {
+      "title": "resetpasswordrequest",
+      "example": {
+        "password": "alpha0987"
+      },
+      "type": "object",
+      "properties": {
+        "password": {
+          "type": "string"
+        }
+      },
+      "required": ["password"]
+    },
+    "forgetpassowrdrequest": {
+      "title": "forgetpassowrdrequest",
+      "example": {
+        "email": "john@gmail.com"
+      },
+      "type": "object",
+      "properties": {
+        "email": {
+          "type": "string"
+        }
+      },
+      "required": ["email"]
+    },
+    "updatecartitemrequest": {
+      "title": "updatecartitemrequest",
+      "example": {
+        "savedForLater": true
+      },
+      "type": "object",
+      "properties": {
+        "savedForLater": {
+          "type": "boolean"
+        }
+      },
+      "required": ["savedForLater"]
+    }
+  },
+  "tags": [
+    {
+      "name": "products",
+      "description": "These are basically games"
+    },
+    {
+      "name": "Important Routes",
+      "description": "These are the basic routes you will be hitting"
+    },
+    {
+      "name": "Auth",
+      "description": "This the auth area"
+    },
+    {
+      "name": "cart"
+    }
+  ]
+}

@@ -34,6 +34,7 @@
     "randomatic": "^3.1.1",
     "razorpay": "^2.0.6",
     "slugify": "^1.4.0",
+    "swagger-ui-express": "^4.1.4",
     "uuid": "^8.1.0"
   }
 }
