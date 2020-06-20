@@ -46,7 +46,13 @@ const productSchema = new mongoose.Schema(
       min: -1,
       max: 100,
     },
-    genre: String,
+    genre: {
+      //Array of strings
+      type: [String],
+      required: [true, "genre cannot be empty"],
+      //Only available value
+      enum: ["Action", "RPG", "FPS", "Horror", "Battle Royal", "Mystery"],
+    },
     pegi: {
       type: String,
       required: true,
@@ -72,6 +78,10 @@ const productSchema = new mongoose.Schema(
     video: {
       type: [String],
       required: [true, "video link cannot be empty"],
+    },
+    videoImage: {
+      type: [String],
+      required: [true, "video image cannot be empty"],
     },
   },
   {
