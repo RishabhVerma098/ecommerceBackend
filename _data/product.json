@@ -11,7 +11,7 @@
     "pegi": 18,
     "company": "Ubisoft",
     "sold": 6,
-    "dp": "https://i.pinimg.com/originals/ea/59/a9/ea59a9b8d6d6dd2ff127dc588ef2aaf4.jpg",
+    "photo": "https://i.pinimg.com/originals/ea/59/a9/ea59a9b8d6d6dd2ff127dc588ef2aaf4.jpg",
     "video": [
       "https://www.youtube.com/watch?v=YApuEWtG30w",
       "https://www.youtube.com/watch?v=lTqGdQ_7MPA",
@@ -35,7 +35,7 @@
     "pegi": 16,
     "company": "Activision",
     "sold": 0,
-    "dp": "https://images.dexerto.com/uploads/2020/04/08194117/call-of-duty-may-have-accidentally-revealed-warzone-duos-coming-soon.jpg",
+    "photo": "https://images.dexerto.com/uploads/2020/04/08194117/call-of-duty-may-have-accidentally-revealed-warzone-duos-coming-soon.jpg",
     "video": [
       "https://www.youtube.com/watch?v=0E44DClsX5Q",
       "https://www.youtube.com/watch?v=7N8VDutRs_U",
@@ -59,7 +59,7 @@
     "pegi": 13,
     "company": "Rockstar Games",
     "sold": 5,
-    "dp": "https://www.hitc.com/static/uploads/2020/05/Epic-Games-store-When-can-you-download-GTA-5-for-free-Mystery-game-will-be-revealed-soon-1024x576.jpg",
+    "photo": "https://www.hitc.com/static/uploads/2020/05/Epic-Games-store-When-can-you-download-GTA-5-for-free-Mystery-game-will-be-revealed-soon-1024x576.jpg",
     "video": [
       "https://www.youtube.com/watch?v=QkkoHAzjnUs",
       "https://www.youtube.com/watch?v=P20ASB1MdnI",
@@ -83,7 +83,7 @@
     "pegi": 13,
     "company": "Ubisoft",
     "sold": 10,
-    "dp": "https://cdn.mos.cms.futurecdn.net/pQFWGWsHcBk7S45JvQLhvf.jpg",
+    "photo": "https://cdn.mos.cms.futurecdn.net/pQFWGWsHcBk7S45JvQLhvf.jpg",
     "video": [
       "https://www.youtube.com/watch?v=2GIVVsTKTLg",
       "https://www.youtube.com/watch?v=hh9x4NqW0Dw",
@@ -107,7 +107,7 @@
     "pegi": 13,
     "company": "Ubisoft",
     "sold": 3,
-    "dp": "https://i.pcmag.com/imagery/articles/00iLm8RExIaZqNBQrnceZg2-1.fit_scale.size_2698x1517.v1569490706.jpg",
+    "photo": "https://i.pcmag.com/imagery/articles/00iLm8RExIaZqNBQrnceZg2-1.fit_scale.size_2698x1517.v1569490706.jpg",
     "video": [
       "https://www.youtube.com/watch?v=C19ap2M7DDE",
       "https://www.youtube.com/watch?v=NL4ZxDWLwpM",
@@ -131,7 +131,7 @@
     "pegi": 18,
     "company": "Respawn",
     "sold": 3,
-    "dp": "https://upload.wikimedia.org/wikipedia/en/thumb/d/db/Apex_legends_cover.jpg/220px-Apex_legends_cover.jpg",
+    "photo": "https://upload.wikimedia.org/wikipedia/en/thumb/d/db/Apex_legends_cover.jpg/220px-Apex_legends_cover.jpg",
     "video": [
       "https://www.youtube.com/watch?v=_sGD6OqWG5E",
       "https://www.youtube.com/watch?v=oQtHENM_GZU",
@@ -155,7 +155,7 @@
     "pegi": 18,
     "company": "Epic Games",
     "sold": 1,
-    "dp": "https://media.playstation.com/is/image/SCEA/the-last-of-us-part-ii-splash-bgb-ellie-ps4-us-24aug19?$native_nt$",
+    "photo": "https://media.playstation.com/is/image/SCEA/the-last-of-us-part-ii-splash-bgb-ellie-ps4-us-24aug19?$native_nt$",
     "video": [
       "https://www.youtube.com/watch?v=X0VubwgS2Y4",
       "https://www.youtube.com/watch?v=qPNiIeKMHyg&t=69s",
@@ -179,7 +179,7 @@
     "pegi": 18,
     "company": "Respawn",
     "sold": 4,
-    "dp": "https://upload.wikimedia.org/wikipedia/en/5/5a/FF_XV_cover_art.jpg",
+    "photo": "https://upload.wikimedia.org/wikipedia/en/5/5a/FF_XV_cover_art.jpg",
     "video": [
       "https://www.youtube.com/watch?v=CNM6o9um1dc",
       "https://www.youtube.com/watch?v=IiI7SMQA59Q",
