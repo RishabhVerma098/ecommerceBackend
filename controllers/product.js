@@ -108,3 +108,29 @@ exports.deleteProduct = async (req, res, next) => {
     next(error);
   }
 };
+
+/**
+ * @description filter product
+ * @param route delete /api/v1/product/filter
+ * @param access PRIVATE
+ */
+exports.filterProduct = async (req, res, next) => {
+  try {
+    const product = await productModel.find(req.body);
+
+    res.status(200).json({
+      couunt: product.length,
+      sucess: true,
+      data: product,
+    });
+  } catch (error) {
+    next(error);
+  }
+};
+
+// platform: { $in: ["PS4", "XBOX"] },
+// company: { $in: ["Activision", "Respawn", "Ubisoft"] },
+// genre: { $in: ["RPG", "FPS"] },
+// $and: [{ price: { $gt: 3000 } }, { price: { $lt: 4000 } }],
+// pegi: { $in: ["13", "18"] },
+// $and: [{ rating: { $gte: 5 } }, { rating: { $lte: 5 } }],

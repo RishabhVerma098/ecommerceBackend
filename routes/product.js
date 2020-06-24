@@ -5,6 +5,7 @@ const {
   updateProduct,
   deleteProduct,
   createProduct,
+  filterProduct,
 } = require("../controllers/product");
 
 const router = express.Router();
@@ -18,6 +19,7 @@ router
   .route("/")
   .get(advanceFiltering(productModel), getProducts)
   .post(protectRoute, createProduct);
+router.route("/filter").get(filterProduct);
 router
   .route("/:id")
   .get(getSingleProduct)
