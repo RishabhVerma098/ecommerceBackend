@@ -111,18 +111,12 @@ exports.deleteProduct = async (req, res, next) => {
 
 /**
  * @description filter product
- * @param route delete /api/v1/product/query
+ * @param route delete /api/v1/product/filter
  * @param access PRIVATE
  */
 exports.filterProduct = async (req, res, next) => {
   try {
-    const product = await productModel.find({
-      // platform: { $in: ["PS4", "XBOX"] },
-      //company: { $in: ["Activision", "Respawn", "Ubisoft"] },
-    });
-    if (!product) {
-      return next(new ErrorHandler(`my error`, 404));
-    }
+    const product = await productModel.find(req.body);
 
     res.status(200).json({
       couunt: product.length,
@@ -133,3 +127,10 @@ exports.filterProduct = async (req, res, next) => {
     next(error);
   }
 };
+
+// platform: { $in: ["PS4", "XBOX"] },
+// company: { $in: ["Activision", "Respawn", "Ubisoft"] },
+// genre: { $in: ["RPG", "FPS"] },
+// $and: [{ price: { $gt: 3000 } }, { price: { $lt: 4000 } }],
+// pegi: { $in: ["13", "18"] },
+// $and: [{ rating: { $gte: 5 } }, { rating: { $lte: 5 } }],

@@ -1,18 +1,27 @@
 [
   {
     "id": 1,
-    "title": "Apex lengends",
+    "title": "Cyberpunk 2077",
     "description": "Abrasion of left index finger, initial encounter",
     "rating": 4,
-    "price": "2000",
+    "price": "3000",
     "offer": 20,
     "platform": "PS4",
-    "genre": null,
+    "genre": ["Action", "RPG", "FPS"],
     "pegi": 18,
-    "company": "Respawn",
+    "company": "Ubisoft",
     "sold": 6,
-    "dp": "something.jpg",
-    "video": ["null.mp4", "null.mp4", "null.mp4"]
+    "photo": "https://i.pinimg.com/originals/ea/59/a9/ea59a9b8d6d6dd2ff127dc588ef2aaf4.jpg",
+    "video": [
+      "https://www.youtube.com/watch?v=YApuEWtG30w",
+      "https://www.youtube.com/watch?v=lTqGdQ_7MPA",
+      "https://www.youtube.com/watch?v=mrZC1Jcv0dw"
+    ],
+    "videoImage": [
+      "https://cdn.images.express.co.uk/img/dynamic/143/590x/Cyberpunk-2077-release-date-file-size-pre-load-1146183.jpg?r=1561722630953",
+      "https://static.cdprojektred.com/cyberpunk.net/news/small/cyberpunk.net_en_1567165865_5d690daa53fb96.88413624.jpg",
+      "https://i.ytimg.com/vi/P99qJGrPNLs/maxresdefault.jpg"
+    ]
   },
   {
     "id": 2,
@@ -22,12 +31,21 @@
     "price": "0",
     "offer": 0,
     "platform": "PS4",
-    "genre": null,
+    "genre": ["Action", "FPS", "Battle Royal"],
     "pegi": 16,
     "company": "Activision",
     "sold": 0,
-    "dp": "something.jpg",
-    "video": ["null.mp4", "null.mp4", "null.mp4"]
+    "photo": "https://images.dexerto.com/uploads/2020/04/08194117/call-of-duty-may-have-accidentally-revealed-warzone-duos-coming-soon.jpg",
+    "video": [
+      "https://www.youtube.com/watch?v=0E44DClsX5Q",
+      "https://www.youtube.com/watch?v=7N8VDutRs_U",
+      "https://www.youtube.com/watch?v=u_SFbaL-6zE"
+    ],
+    "videoImage": [
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRP0T_4PiMDXg-Ug-KxMmsqhyAbbKLnLR98M9O-xkTwCguzh0mf&usqp=CAU",
+      "https://www.slashgear.com/wp-content/uploads/2020/06/Modern-Warfare-2019-soldier-1280x720.jpg",
+      "https://i.ytimg.com/vi/u_SFbaL-6zE/maxresdefault.jpg"
+    ]
   },
   {
     "id": 3,
@@ -37,12 +55,21 @@
     "price": "4500",
     "offer": 50,
     "platform": "XBOX",
-    "genre": null,
+    "genre": ["Action", "RPG", "Horror"],
     "pegi": 13,
     "company": "Rockstar Games",
     "sold": 5,
-    "dp": "something.jpg",
-    "video": ["null.mp4", "null.mp4", "null.mp4"]
+    "photo": "https://www.hitc.com/static/uploads/2020/05/Epic-Games-store-When-can-you-download-GTA-5-for-free-Mystery-game-will-be-revealed-soon-1024x576.jpg",
+    "video": [
+      "https://www.youtube.com/watch?v=QkkoHAzjnUs",
+      "https://www.youtube.com/watch?v=P20ASB1MdnI",
+      "https://www.youtube.com/watch?v=RQEOwEBvC-M"
+    ],
+    "videoImage": [
+      "https://d2skuhm0vrry40.cloudfront.net/2020/articles/2020-05-14-10-24/looks-like-gta-5-will-be-free-on-the-epic-games-store-1589448295085.jpg/EG11/thumbnail/750x422/format/jpg/quality/60",
+      "https://img.republicworld.com/republic-prod/stories/promolarge/xxhdpi/33d2yzu4mhlcvy63_1586831502.jpeg?tr=w-812,h-464",
+      "https://cdn.ndtv.com/tech/gadgets/gta-5-characters.jpg"
+    ]
   },
   {
     "id": 4,
@@ -52,41 +79,116 @@
     "price": "6000",
     "offer": 40,
     "platform": "PC",
-    "genre": null,
+    "genre": ["Action", "RPG", "Mystery"],
     "pegi": 13,
     "company": "Ubisoft",
     "sold": 10,
-    "dp": "Ford",
-    "video": ["null.mp4", "null.mp4", "null.mp4"]
+    "photo": "https://cdn.mos.cms.futurecdn.net/pQFWGWsHcBk7S45JvQLhvf.jpg",
+    "video": [
+      "https://www.youtube.com/watch?v=2GIVVsTKTLg",
+      "https://www.youtube.com/watch?v=hh9x4NqW0Dw",
+      "https://www.youtube.com/watch?v=DqoQG_XYF-8"
+    ],
+    "videoImage": [
+      "https://cdn.vox-cdn.com/thumbor/2yUkQyE72LoV4bUAwT_f97M_OsQ=/0x0:1920x1080/1400x1400/filters:focal(807x387:1113x693):format(jpeg)/cdn.vox-cdn.com/uploads/chorus_image/image/51816837/wd_media_screens_reveal_ncsa.0.jpg",
+      "https://thumbor.forbes.com/thumbor/960x0/https%3A%2F%2Fblogs-images.forbes.com%2Finsertcoin%2Ffiles%2F2016%2F11%2Fwatch-dogs8.jpg",
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcS2RKvse8YgdjaqpZ6OZH_igCy6CD0XRQxIXv2_doiySRnFLy3N&usqp=CAU"
+    ]
   },
   {
     "id": 5,
-    "title": "Metal gear S5",
+    "title": "MetalGear S5",
     "description": "Other bursitis of knee, right knee",
     "rating": 4.5,
     "price": "-1",
     "offer": 0,
     "platform": "XBOX",
-    "genre": null,
+    "genre": ["Action", "RPG", "FPS", "Horror"],
     "pegi": 13,
     "company": "Ubisoft",
     "sold": 3,
-    "dp": "something.jpg",
-    "video": ["null.mp4", "null.mp4", "null.mp4"]
+    "photo": "https://i.pcmag.com/imagery/articles/00iLm8RExIaZqNBQrnceZg2-1.fit_scale.size_2698x1517.v1569490706.jpg",
+    "video": [
+      "https://www.youtube.com/watch?v=C19ap2M7DDE",
+      "https://www.youtube.com/watch?v=NL4ZxDWLwpM",
+      "https://www.youtube.com/watch?v=Krc1t4HU8GI"
+    ],
+    "videoImage": [
+      "https://api.time.com/wp-content/uploads/2015/08/metal-gear-solid-v-10.jpg",
+      "https://steamcdn-a.akamaihd.net/steam/apps/287700/capsule_616x353.jpg?t=1591740509",
+      "https://api.time.com/wp-content/uploads/2015/11/best-looking-games-201605.jpg"
+    ]
   },
   {
     "id": 6,
-    "title": "Fortinite",
+    "title": "Apex Lengends",
     "description": "Underdosing of tricyclic antidepressants, initial encounter",
     "rating": 2.5,
     "price": "0",
     "offer": 0,
     "platform": "PC",
-    "genre": null,
+    "genre": ["Action", "RPG", "FPS", "Battle Royal"],
+    "pegi": 18,
+    "company": "Respawn",
+    "sold": 3,
+    "photo": "https://upload.wikimedia.org/wikipedia/en/thumb/d/db/Apex_legends_cover.jpg/220px-Apex_legends_cover.jpg",
+    "video": [
+      "https://www.youtube.com/watch?v=_sGD6OqWG5E",
+      "https://www.youtube.com/watch?v=oQtHENM_GZU",
+      "https://www.youtube.com/watch?v=NEAWC9eK1Ts"
+    ],
+    "videoImage": [
+      "https://cdn.mos.cms.futurecdn.net/iutb4CPUz3Dp8vX4pWTJGF.jpg",
+      "https://cms.qz.com/wp-content/uploads/2019/02/Apex-Legends-screenshot.png?w=1600&h=900&crop=1&strip=all&quality=75",
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSkFVsLDsV4Jmv8jDacrkI3HFcfWJHlHrgQMnZ1cGAatEWJIdUm&usqp=CAU"
+    ]
+  },
+  {
+    "id": 7,
+    "title": "Last of Us 2",
+    "description": "Underdosing of tricyclic antidepressants, initial encounter",
+    "rating": 2.5,
+    "price": "0",
+    "offer": 0,
+    "platform": "PC",
+    "genre": ["Action", "RPG", "Horror", "Mystery"],
     "pegi": 18,
     "company": "Epic Games",
-    "sold": 2,
-    "dp": "something.jpg",
-    "video": ["null.mp4", "null.mp4", "null.mp4"]
+    "sold": 1,
+    "photo": "https://media.playstation.com/is/image/SCEA/the-last-of-us-part-ii-splash-bgb-ellie-ps4-us-24aug19?$native_nt$",
+    "video": [
+      "https://www.youtube.com/watch?v=X0VubwgS2Y4",
+      "https://www.youtube.com/watch?v=qPNiIeKMHyg&t=69s",
+      "https://www.youtube.com/watch?v=TXl9GI1p_Os&t=14s"
+    ],
+    "videoImage": [
+      "https://i.pinimg.com/originals/13/d3/83/13d38369d8afac05c2c3b64641ab5b55.jpg",
+      "https://cms.qz.com/wp-content/uploads/2019/02/Apex-Legends-screenshot.png?w=1600&h=900&crop=1&strip=all&quality=75",
+      "https://i.ytimg.com/vi/Ig0mNpvBz28/maxresdefault.jpg"
+    ]
+  },
+  {
+    "id": 8,
+    "title": "Final Fantasy XV",
+    "description": "Underdosing of tricyclic antidepressants, initial encounter",
+    "rating": 2.5,
+    "price": "0",
+    "offer": 0,
+    "platform": "PC",
+    "genre": ["Action", "RPG", "FPS"],
+    "pegi": 18,
+    "company": "Respawn",
+    "sold": 4,
+    "photo": "https://upload.wikimedia.org/wikipedia/en/5/5a/FF_XV_cover_art.jpg",
+    "video": [
+      "https://www.youtube.com/watch?v=CNM6o9um1dc",
+      "https://www.youtube.com/watch?v=IiI7SMQA59Q",
+      "https://www.youtube.com/watch?v=IcUSXub_ypU"
+    ],
+    "videoImage": [
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSfxkG8_oRebaRhumIfjVLVazme3Ka0A7JqiSuRLiotlg77wS9I&usqp=CAU",
+      "https://cdn.arstechnica.net/wp-content/uploads/2016/12/ffxvm-800x444.jpg",
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTHAgiykI7Pn3y5bZXjhiDdcAOpaft69UoK2NLpUxXzEEY_7Is_&usqp=CAU"
+    ]
   }
 ]
