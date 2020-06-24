@@ -17,7 +17,7 @@ const productSchema = new mongoose.Schema(
       maxlength: [500, "length cannot be more than 500"],
     },
     platform: {
-      type: [String],
+      type: String,
       required: [true, "Platform cannot be empty"],
       enum: ["PS4", "XBOX", "PC"],
     },

@@ -108,3 +108,28 @@ exports.deleteProduct = async (req, res, next) => {
     next(error);
   }
 };
+
+/**
+ * @description filter product
+ * @param route delete /api/v1/product/query
+ * @param access PRIVATE
+ */
+exports.filterProduct = async (req, res, next) => {
+  try {
+    const product = await productModel.find({
+      // platform: { $in: ["PS4", "XBOX"] },
+      //company: { $in: ["Activision", "Respawn", "Ubisoft"] },
+    });
+    if (!product) {
+      return next(new ErrorHandler(`my error`, 404));
+    }
+
+    res.status(200).json({
+      couunt: product.length,
+      sucess: true,
+      data: product,
+    });
+  } catch (error) {
+    next(error);
+  }
+};
