@@ -116,6 +116,7 @@ exports.deleteProduct = async (req, res, next) => {
  */
 exports.filterProduct = async (req, res, next) => {
   try {
+    console.log(req.body);
     const product = await productModel.find(req.body);
 
     res.status(200).json({
