@@ -19,7 +19,7 @@ router
   .route("/")
   .get(advanceFiltering(productModel), getProducts)
   .post(protectRoute, createProduct);
-router.route("/filter").get(filterProduct);
+router.route("/filter").post(filterProduct);
 router
   .route("/:id")
   .get(getSingleProduct)
