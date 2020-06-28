@@ -4,6 +4,7 @@ const Razorpay = require("razorpay");
 const crypto = require("crypto");
 const productModel = require("../models/product");
 const cartModel = require("../models/cart");
+const cart = require("../models/cart");
 
 const razorpay = new Razorpay({
   key_id: process.env.PAYMENT_KEY_ID,
@@ -12,22 +13,32 @@ const razorpay = new Razorpay({
 
 /**
  * @description make payment
- * @param route POST /api/v1/payment/razorpay/:productId
+ * @param route POST /api/v1/payment/razorpay/:userId
  * @param access PRIVATE
  */
 exports.makePayment = async (req, res, next) => {
-  const id = req.params.productId;
-  const { price } = await productModel.findById(id);
+  //* list of product ids
+  const ids = req.body.id;
 
-  if (!price) {
-    next(new ErrorHandler(`product id is incorrect for payment`, 404));
+  //* list of all the products
+  const products = [];
+  for (let i = 0; i < ids.length; i++) {
+    const product = await productModel.find({ _id: ids[i] });
+    products.push(product[0]);
+  }
+
+  //* extract price with off , caculate total amount
+  let finalPrice = 0;
+  for (let i = 0; i < products.length; i++) {
+    const price = (products[i].price * products[i].offer) / 100;
+    finalPrice = finalPrice + price;
   }
 
   const payment_capture = 1;
   const currency = "INR";
 
   const options = {
-    amount: price * 100,
+    amount: finalPrice * 100,
     currency,
     receipt: uuidv4(),
     payment_capture,
@@ -37,16 +48,25 @@ exports.makePayment = async (req, res, next) => {
     const response = await razorpay.orders.create(options);
     console.log(response);
 
-    // //call update cart orderID
-    const cart_Item = await cartModel.find({ product: id.toString() });
-    console.log(cart_Item);
-
     // ! here get cart_item and update the order_Id field from response
+    //need userid and productid and get cart_item
+    let cart_list = [];
+    for (let i = 0; i < products.length; i++) {
+      const cart_items = await cartModel.updateOne(
+        {
+          user: req.params.userId,
+          product: products[i],
+        },
+        { order_Id: response.id }
+      );
+      cart_list.push(cart_items);
+    }
+
+    console.log(cart_list);
+
     // ! then the flow will move to verify payment by webhook
     // ! where once verified , get the cart_Item by ORDER_ID and update purchased to true
     // ! At last call FIX 'my game' route to get games who has purchased true , currently we are getting all the items present in the cart
-
-    // cart_Item.addOrderId(response.id);
 
     res.json({
       id: response.id,
