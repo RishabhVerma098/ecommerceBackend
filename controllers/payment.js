@@ -4,6 +4,7 @@ const Razorpay = require("razorpay");
 const crypto = require("crypto");
 const productModel = require("../models/product");
 const cartModel = require("../models/cart");
+const cart = require("../models/cart");
 
 const razorpay = new Razorpay({
   key_id: process.env.PAYMENT_KEY_ID,
@@ -12,22 +13,32 @@ const razorpay = new Razorpay({
 
 /**
  * @description make payment
- * @param route POST /api/v1/payment/razorpay/:productId
+ * @param route POST /api/v1/payment/razorpay/:userId
  * @param access PRIVATE
  */
 exports.makePayment = async (req, res, next) => {
-  const id = req.params.productId;
-  const { price } = await productModel.findById(id);
+  //* list of product ids
+  const ids = req.body.id;
 
-  if (!price) {
-    next(new ErrorHandler(`product id is incorrect for payment`, 404));
+  //* list of all the products
+  const products = [];
+  for (let i = 0; i < ids.length; i++) {
+    const product = await productModel.find({ _id: ids[i] });
+    products.push(product[0]);
+  }
+
+  //* extract price with off , caculate total amount
+  let finalPrice = 0;
+  for (let i = 0; i < products.length; i++) {
+    const price = (products[i].price * products[i].offer) / 100;
+    finalPrice = finalPrice + price;
   }
 
   const payment_capture = 1;
   const currency = "INR";
 
   const options = {
-    amount: price * 100,
+    amount: finalPrice * 100,
     currency,
     receipt: uuidv4(),
     payment_capture,
@@ -35,18 +46,19 @@ exports.makePayment = async (req, res, next) => {
 
   try {
     const response = await razorpay.orders.create(options);
-    console.log(response);
 
-    // //call update cart orderID
-    const cart_Item = await cartModel.find({ product: id.toString() });
-    console.log(cart_Item);
+    //* here get cart_item and update the order_Id field from response
+    for (let i = 0; i < products.length; i++) {
+      await cartModel.updateOne(
+        {
+          user: req.params.userId,
+          product: products[i],
+        },
+        { order_Id: response.id }
+      );
+    }
 
-    // ! here get cart_item and update the order_Id field from response
-    // ! then the flow will move to verify payment by webhook
-    // ! where once verified , get the cart_Item by ORDER_ID and update purchased to true
-    // ! At last call FIX 'my game' route to get games who has purchased true , currently we are getting all the items present in the cart
-
-    // cart_Item.addOrderId(response.id);
+    // * then the flow will move to verify payment by webhook
 
     res.json({
       id: response.id,
@@ -65,6 +77,8 @@ exports.makePayment = async (req, res, next) => {
  * @param access PRIVATE (but protected by secret key)
  */
 exports.verifyPayment = async (req, res, next) => {
+  // * where once verified , get the cart_Item by ORDER_ID and update purchased to true
+  // ! At last call FIX 'my game' route to get games who has purchased true , currently we are getting all the items present in the cart
   // do a validation
   try {
     const shasum = crypto.createHmac("sha256", process.env.PAYMENT);
@@ -73,8 +87,16 @@ exports.verifyPayment = async (req, res, next) => {
 
     if (digest === req.headers["x-razorpay-signature"]) {
       let body = JSON.stringify(req.body, null, 4);
-      require("fs").writeFileSync("payment3.json", body);
-      //TODO: where once verified , get the cart_Item by ORDER_ID and update purchased to true
+      //* where once verified , get the cart_Item by ORDER_ID and update purchased to true
+
+      const ans = await cartModel.updateMany(
+        {
+          order_Id: req.body.payload.payment.entity.order_id.toString(),
+        },
+        { purchased: true }
+      );
+
+      console.log("hhelo", ans);
     } else {
       // pass it
       next(new ErrorHandler(`Body and header not same`, 500));

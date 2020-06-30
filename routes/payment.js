@@ -7,7 +7,7 @@ const {
 
 const router = express.Router();
 
-router.route("/razorpay/:productId").post(makePayment);
+router.route("/razorpay/:userId").post(makePayment);
 router.route("/verification").post(verifyPayment);
 router.route("/update/:productId").put(updatePurchased);
 
