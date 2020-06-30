@@ -9,8 +9,12 @@ const ErrorHandler = require("../utils/errorHandler.js");
  */
 exports.getMyGames = async (req, res, next) => {
   try {
-    const cart_items = await cartModel.find({ user: req.user.id.toString() });
+    const cart_items = await cartModel.find({
+      user: req.user.id.toString(),
+      purchased: true,
+    });
 
+    console.log(cart_items, "ietms");
     let games = [];
 
     //TODO:change only display those who have sucess true
@@ -21,6 +25,8 @@ exports.getMyGames = async (req, res, next) => {
         .select("+gameFile");
       games.push(product);
     }
+
+    console.log(games);
 
     res.status(200).json({
       sucess: true,
