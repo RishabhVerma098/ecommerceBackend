@@ -46,27 +46,19 @@ exports.makePayment = async (req, res, next) => {
 
   try {
     const response = await razorpay.orders.create(options);
-    console.log(response);
 
-    // ! here get cart_item and update the order_Id field from response
-    //need userid and productid and get cart_item
-    let cart_list = [];
+    //* here get cart_item and update the order_Id field from response
     for (let i = 0; i < products.length; i++) {
-      const cart_items = await cartModel.updateOne(
+      await cartModel.updateOne(
         {
           user: req.params.userId,
           product: products[i],
         },
         { order_Id: response.id }
       );
-      cart_list.push(cart_items);
     }
 
-    console.log(cart_list);
-
-    // ! then the flow will move to verify payment by webhook
-    // ! where once verified , get the cart_Item by ORDER_ID and update purchased to true
-    // ! At last call FIX 'my game' route to get games who has purchased true , currently we are getting all the items present in the cart
+    // * then the flow will move to verify payment by webhook
 
     res.json({
       id: response.id,
@@ -85,6 +77,8 @@ exports.makePayment = async (req, res, next) => {
  * @param access PRIVATE (but protected by secret key)
  */
 exports.verifyPayment = async (req, res, next) => {
+  // * where once verified , get the cart_Item by ORDER_ID and update purchased to true
+  // ! At last call FIX 'my game' route to get games who has purchased true , currently we are getting all the items present in the cart
   // do a validation
   try {
     const shasum = crypto.createHmac("sha256", process.env.PAYMENT);
@@ -93,8 +87,16 @@ exports.verifyPayment = async (req, res, next) => {
 
     if (digest === req.headers["x-razorpay-signature"]) {
       let body = JSON.stringify(req.body, null, 4);
-      require("fs").writeFileSync("payment3.json", body);
-      //TODO: where once verified , get the cart_Item by ORDER_ID and update purchased to true
+      //* where once verified , get the cart_Item by ORDER_ID and update purchased to true
+
+      const ans = await cartModel.updateMany(
+        {
+          order_Id: req.body.payload.payment.entity.order_id.toString(),
+        },
+        { purchased: true }
+      );
+
+      console.log("hhelo", ans);
     } else {
       // pass it
       next(new ErrorHandler(`Body and header not same`, 500));

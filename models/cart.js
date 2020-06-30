@@ -18,6 +18,7 @@ const cartSchema = new mongoose.Schema(
     },
     order_Id: {
       type: String,
+      default: "something",
     },
     purchased: {
       type: Boolean,
