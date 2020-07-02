@@ -78,7 +78,7 @@ exports.makePayment = async (req, res, next) => {
  */
 exports.verifyPayment = async (req, res, next) => {
   // * where once verified , get the cart_Item by ORDER_ID and update purchased to true
-  // ! At last call FIX 'my game' route to get games who has purchased true , currently we are getting all the items present in the cart
+  // * At last call FIX 'my game' route to get games who has purchased true , currently we are getting all the items present in the cart
   // do a validation
   try {
     const shasum = crypto.createHmac("sha256", process.env.PAYMENT);
@@ -95,6 +95,22 @@ exports.verifyPayment = async (req, res, next) => {
         },
         { purchased: true }
       );
+
+      //update sold
+      const productList = await cartModel.find({
+        order_Id: req.body.payload.payment.entity.order_id.toString(),
+      });
+
+      for (let i = 0; i < productList.length; i++) {
+        await productModel.findByIdAndUpdate(
+          productList[i].product,
+          { $inc: { sold: 1 } },
+          {
+            new: true,
+            runValidators: true,
+          }
+        );
+      }
 
       console.log("hhelo", ans);
     } else {
