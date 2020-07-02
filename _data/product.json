@@ -3,7 +3,7 @@
     "id": 1,
     "title": "Cyberpunk 2077",
     "description": "Abrasion of left index finger, initial encounter",
-    "rating": 4,
+    "rating": 4.3,
     "price": "3000",
     "offer": 20,
     "platform": "PS4",
@@ -19,7 +19,7 @@
     ],
     "videoImage": [
       "https://cdn.images.express.co.uk/img/dynamic/143/590x/Cyberpunk-2077-release-date-file-size-pre-load-1146183.jpg?r=1561722630953",
-      "https://static.cdprojektred.com/cyberpunk.net/news/small/cyberpunk.net_en_1567165865_5d690daa53fb96.88413624.jpg",
+      "https://images.unsplash.com/Ys-DBJeX0nE.JPG?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80",
       "https://i.ytimg.com/vi/P99qJGrPNLs/maxresdefault.jpg"
     ]
   },
@@ -28,8 +28,8 @@
     "title": "Warzone",
     "description": "Nondisplaced fracture of medial phalanx of right ring finger, initial encounter for closed fracture",
     "rating": 3.5,
-    "price": "0",
-    "offer": 0,
+    "price": "3400",
+    "offer": 10,
     "platform": "PS4",
     "genre": ["Action", "FPS", "Battle Royal"],
     "pegi": 16,
@@ -100,7 +100,7 @@
     "title": "MetalGear S5",
     "description": "Other bursitis of knee, right knee",
     "rating": 4.5,
-    "price": "-1",
+    "price": "2000",
     "offer": 0,
     "platform": "XBOX",
     "genre": ["Action", "RPG", "FPS", "Horror"],
@@ -124,8 +124,8 @@
     "title": "Apex Lengends",
     "description": "Underdosing of tricyclic antidepressants, initial encounter",
     "rating": 2.5,
-    "price": "0",
-    "offer": 0,
+    "price": "1200",
+    "offer": 50,
     "platform": "PC",
     "genre": ["Action", "RPG", "FPS", "Battle Royal"],
     "pegi": 18,
@@ -148,8 +148,8 @@
     "title": "Last of Us 2",
     "description": "Underdosing of tricyclic antidepressants, initial encounter",
     "rating": 2.5,
-    "price": "0",
-    "offer": 0,
+    "price": "3400",
+    "offer": 30,
     "platform": "PC",
     "genre": ["Action", "RPG", "Horror", "Mystery"],
     "pegi": 18,
@@ -172,8 +172,8 @@
     "title": "Final Fantasy XV",
     "description": "Underdosing of tricyclic antidepressants, initial encounter",
     "rating": 2.5,
-    "price": "0",
-    "offer": 0,
+    "price": "3200",
+    "offer": 40,
     "platform": "PC",
     "genre": ["Action", "RPG", "FPS"],
     "pegi": 18,
@@ -189,6 +189,102 @@
       "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSfxkG8_oRebaRhumIfjVLVazme3Ka0A7JqiSuRLiotlg77wS9I&usqp=CAU",
       "https://cdn.arstechnica.net/wp-content/uploads/2016/12/ffxvm-800x444.jpg",
       "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTHAgiykI7Pn3y5bZXjhiDdcAOpaft69UoK2NLpUxXzEEY_7Is_&usqp=CAU"
+    ]
+  },
+  {
+    "id": 9,
+    "title": "Bloodborne",
+    "description": "Lorem sit Lorem deserunt aliqua eu irure ex laborum nulla aliquip velit ea elit culpa.",
+    "rating": 4.5,
+    "price": "1300",
+    "offer": 10,
+    "platform": "PS4",
+    "genre": ["Action", "RPG", "Horror"],
+    "pegi": 18,
+    "company": "Respawn",
+    "sold": 4,
+    "photo": "https://upload.wikimedia.org/wikipedia/en/thumb/6/68/Bloodborne_Cover_Wallpaper.jpg/220px-Bloodborne_Cover_Wallpaper.jpg",
+    "video": [
+      "https://www.youtube.com/watch?v=CNM6o9um1dc",
+      "https://www.youtube.com/watch?v=G203e1HhixY",
+      "https://www.youtube.com/watch?v=IcUSXub_ypU"
+    ],
+    "videoImage": [
+      "https://media.playstation.com/is/image/SCEA/bloodborne-two-column-02-ps4-us-04jun14?$MediaCarousel_Original$",
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQxIILjdWhfYBy6NcCD9p5uDJf9vctptKXaiA&usqp=CAU",
+      "https://d2skuhm0vrry40.cloudfront.net/2018/articles/2018-03-06-16-07/dispelling-the-myths-of-bloodborne-1520352421043.jpg/EG11/thumbnail/750x422/format/jpg/quality/60"
+    ]
+  },
+  {
+    "id": 10,
+    "title": "Dark Souls 3",
+    "description": "Underdosing of tricyclic antidepressants, initial encounter",
+    "rating": 4.5,
+    "price": "3000",
+    "offer": 20,
+    "platform": "PS4",
+    "genre": ["Action", "RPG", "Horror", "Mystery"],
+    "pegi": 18,
+    "company": "Epic Games",
+    "sold": 4,
+    "photo": "https://upload.wikimedia.org/wikipedia/en/thumb/b/bb/Dark_souls_3_cover_art.jpg/220px-Dark_souls_3_cover_art.jpg",
+    "video": [
+      "https://www.youtube.com/watch?v=CNM6o9um1dc",
+      "https://www.youtube.com/watch?v=b6MXWZ4mheo",
+      "https://www.youtube.com/watch?v=IcUSXub_ypU"
+    ],
+    "videoImage": [
+      "https://cdn-products.eneba.com/resized-products/dqyd3lhqnklcepe8dxw5_390x400_1x-0.jpg",
+      "https://www.allkeyshop.com/blog/wp-content/uploads/dark-souls-iii-800x600-4.jpg",
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSv0DBcMwZp1lxXeCUQNA0q-1SQ2Azx-aZ5Gw&usqp=CAU"
+    ]
+  },
+  {
+    "id": 11,
+    "title": "Order 1886",
+    "description": "Adipisicing enim cupidatat in proident irure nisi. Est consectetur nisi eu aliqua reprehenderit culpa ullamco qui aute commodo deserunt dolore deserunt.",
+    "rating": 1.5,
+    "price": "2000",
+    "offer": 30,
+    "platform": "XBOX",
+    "genre": ["Action", "RPG", "FPS", "Horror"],
+    "pegi": 18,
+    "company": "Rockstar Games",
+    "sold": 4,
+    "photo": "https://m.media-amazon.com/images/I/71s+OIxdi+L._SS500_.jpg",
+    "video": [
+      "https://www.youtube.com/watch?v=CNM6o9um1dc",
+      "https://www.youtube.com/watch?v=2FK8dgzW0o8",
+      "https://www.youtube.com/watch?v=IcUSXub_ypU"
+    ],
+    "videoImage": [
+      "https://cdn.wccftech.com/wp-content/uploads/2015/02/The-Order.jpg",
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcQwRAtho2fYzYsGtd5XDNzrqBuxRcp0MEpQdQ&usqp=CAU",
+      "https://cdn.dribbble.com/users/1092007/screenshots/3634214/artboard_6.png"
+    ]
+  },
+  {
+    "id": 12,
+    "title": "Mortal KombatX",
+    "description": "Underdosing of tricyclic antidepressants, initial encounter",
+    "rating": 3.1,
+    "price": "1200",
+    "offer": 20,
+    "platform": "XBOX",
+    "genre": ["Action", "RPG", "FPS", "Mystery"],
+    "pegi": 18,
+    "company": "Ubisoft",
+    "sold": 4,
+    "photo": "https://upload.wikimedia.org/wikipedia/en/d/d0/Mortal_Kombat_X_Cover_Art.png",
+    "video": [
+      "https://www.youtube.com/watch?v=CNM6o9um1dc",
+      "https://www.youtube.com/watch?v=jSi2LDkyKmI",
+      "https://www.youtube.com/watch?v=IcUSXub_ypU"
+    ],
+    "videoImage": [
+      "https://i.ytimg.com/vi/MdZaUq3YbRs/maxresdefault.jpg",
+      "https://i.guim.co.uk/img/static/sys-images/Guardian/Pix/pictures/2015/4/23/1429771015553/79758005-7f96-4e40-beb1-8df4d7d0c009-2060x1236.jpeg?width=300&quality=85&auto=format&fit=max&s=feb17f335ca03fec65cf6160529c12fa",
+      "https://cdn-products.eneba.com/resized-products/1467757054-1283811937_390x400_1x-0.jpg"
     ]
   }
 ]

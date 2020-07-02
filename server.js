@@ -6,6 +6,7 @@ require("colors");
 const cors = require("cors");
 const swaggerUi = require("swagger-ui-express");
 const swaggerDocument = require("./eccommerce.postman_collection.json-Swagger20.json");
+const path = require("path");
 
 //initialization
 const app = Express();
@@ -35,7 +36,7 @@ app.use("/api/v1/auth", auth);
 app.use("/api/v1/cart", cart);
 app.use("/api/v1/mygames", mygame);
 app.use("/api/v1/payment", payment);
-
+app.use(Express.static(path.join(__dirname, "public")));
 //swagger
 
 var options = {

@@ -7,7 +7,8 @@ dotenv.config({ path: "./config/config.env" });
 
 //load model schema
 const productModel = require("./models/product");
-
+const cartModel = require("./models/cart");
+const userModel = require("./models/user");
 //connectToDB
 mongoose.connect(process.env.DATABASE_URI, {
   useNewUrlParser: true,
@@ -35,6 +36,8 @@ const ImportData = async () => {
 const DeleteData = async () => {
   try {
     await productModel.deleteMany();
+    await cartModel.deleteMany();
+    await userModel.deleteMany();
     console.log("Data Deleted".red.inverse);
     process.exit();
   } catch (err) {
